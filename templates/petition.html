@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+html,body {
+	height: 100%;
+}
+
+footer{
+	float: right;
+	color: white;
+	padding-right: 5px;
+}
+body {
+	margin: 0;
+	background: linear-gradient(#49a09d, #5f2c82,#49a09d);
+	font-family: sans-serif;
+	font-weight: 100;
+}
+
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	text-align: center;
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+
+
+thead {
+
+		background-color: #55608f;
+}
+
+p{
+	margin-left: 0 auto;
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+	margin-top: 0;
+	padding-top: 0;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	color: white;
+}
+	</style>
+</head>
+<body>
+
+<!-- Display the variables from the login session here!
+ -->
+<h1 style="text-align: center; color: white;">Petition</h1>
+ <table>
+
+<tr>
+<th>Name:</th>
+<th>Last Name:</th>
+<th>Extra:</th>
+</tr>
+
+
+{% for user in users%}
+<tr>
+	
+	<th>{{user['name']}}</th>
+	
+
+	
+	<th>{{user['last_name']}}</th>
+	
+
+	
+	<th>{{user['extra']}}</th>
+	
+</tr>
+{%endfor%}
+</table>
+<p>Number of signatures: {{n}}</p>
+
+</body>
+
+</html>
