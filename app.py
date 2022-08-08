@@ -26,12 +26,11 @@ def index():
     print('yes')
     if request.method == 'POST':
        name = request.form['name']
-       last_name = request.form['last_name']
        email = request.form['email']
        extra = request.form['extra']
 
        try:
-           user = {"name": name, "last_name": last_name, "email" : email, 'extra':extra}
+           user = {"name": name, "email" : email, 'extra':extra}
            print(user)
            db.child("Users").push(user)
            return redirect(url_for('petition'))
@@ -39,24 +38,22 @@ def index():
            print("Authentication failed")
     return render_template("index.html")
 
-@app.route('/petition')
+@app.route('/chat')
 def petition():
     users = db.child("Users").get().val()
     my_user = []
     name = []
-    last_name = []
     email = []
     extra = []
     n = 0
     if users is not None:
       for user in users:
           name.append(users[user]['name'])
-          last_name.append(users[user]['last_name'])
           email.append(users[user]['email'])
           extra.append(users[user]['extra'])
           my_user.append(users[user])
 
-    return render_template('petition.html', name = name, last_name = last_name, email = email, extra = extra, users = my_user, n = n)
+    return render_template('chat.html', name = name, email = email, extra = extra, users = my_user, n = n)
 
 if __name__ == '__main__':
     app.run(debug=True)
