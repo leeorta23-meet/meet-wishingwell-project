@@ -48,13 +48,14 @@ def petition():
     email = []
     extra = []
     n = 0
-    for user in users:
-        name.append(users[user]['name'])
-        last_name.append(users[user]['last_name'])
-        email.append(users[user]['email'])
-        extra.append(users[user]['extra'])
-        my_user.append(users[user])
-        n +=1
+    if users is not None:
+      for user in users:
+          name.append(users[user]['name'])
+          last_name.append(users[user]['last_name'])
+          email.append(users[user]['email'])
+          extra.append(users[user]['extra'])
+          my_user.append(users[user])
+
     return render_template('petition.html', name = name, last_name = last_name, email = email, extra = extra, users = my_user, n = n)
 
 if __name__ == '__main__':
