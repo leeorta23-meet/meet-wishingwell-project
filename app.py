@@ -27,19 +27,19 @@ def index():
     if request.method == 'POST':
        name = request.form['name']
        email = request.form['email']
-       extra = request.form['extra']
+       extra = request.form['extra'] 
 
        try:
            user = {"name": name, "email" : email, 'extra':extra}
            print(user)
            db.child("Users").push(user)
-           return redirect(url_for('petition'))
+           return redirect(url_for('chat'))
        except:
            print("Authentication failed")
     return render_template("index.html")
 
 @app.route('/chat')
-def petition():
+def chat():
     users = db.child("Users").get().val()
     my_user = []
     name = []
@@ -53,7 +53,7 @@ def petition():
           extra.append(users[user]['extra'])
           my_user.append(users[user])
 
-    return render_template('chat.html', name = name, email = email, extra = extra, users = my_user, n = n)
+    return render_template('chat.html', name = name, email = email, extra = extra, users = my_user)
 
 if __name__ == '__main__':
     app.run(debug=True)
