@@ -120,11 +120,7 @@
 	<div class="container darker">
     <p>{{user['extra']}}</p>
     <span class="time-right">{{user['name']}}</span>
-    <p style="color: #999">Date/Time: <span id="datetime"></span></p>
-	<script>
-		var dt = new Date();
-		document.getElementById("datetime").innerHTML = dt.toLocaleString();
-	</script>
+
 </tr>
 {%endfor%}
 </table>
